@@ -1,6 +1,7 @@
 name: Deploy
 
 on:
+  workflow_dispatch:
   push:
     branches: [main, develop]
   pull_request:
@@ -13,7 +14,7 @@ env:
 
 jobs:
   deploy_preview:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
