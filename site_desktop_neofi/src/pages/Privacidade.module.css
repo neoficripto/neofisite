@@ -1,0 +1,73 @@
+.section {
+  width: 100%;
+  padding: clamp(3.75rem, 7vw, 5.25rem) 1.5rem 2.75rem;
+  box-sizing: border-box;
+}
+
+.inner {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.card {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0px 18px 45px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(var(--blur-md));
+  padding: clamp(2.25rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.title {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.meta {
+  margin: 0.6rem 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.98rem;
+}
+
+.content {
+  margin-top: 1.75rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.content h2 {
+  margin: 1.75rem 0 0.6rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.content p {
+  margin: 0.85rem 0 0;
+}
+
+.content ul {
+  margin: 0.85rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.content li {
+  margin: 0.55rem 0 0;
+}
+
+.content a,
+.content a:visited {
+  color: rgba(134, 161, 249, 0.95);
+  text-decoration: none;
+}
+
+.content a:hover {
+  color: #ffffff;
+}

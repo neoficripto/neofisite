@@ -1,0 +1,58 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.layerA,
+.layerB {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: var(--bg-image);
+  background-repeat: repeat;
+  background-size: var(--tile-size) var(--tile-size);
+  opacity: var(--opacity);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.layerA {
+  animation: drift var(--speed) linear infinite;
+  filter: saturate(1.05);
+}
+
+.layerB {
+  animation: driftReverse calc(var(--speed) * 1.4) linear infinite;
+  opacity: calc(var(--opacity) * 0.55);
+  filter: blur(2px) saturate(0.95);
+  mix-blend-mode: screen;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(70% 70% at 50% 40%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 65%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-25%, -25%, 0);
+  }
+}
+
+@keyframes driftReverse {
+  from {
+    transform: translate3d(-25%, -25%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+

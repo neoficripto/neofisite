@@ -1,0 +1,185 @@
+.hero {
+  width: 100%;
+  padding: clamp(3.75rem, 7vw, 5.25rem) 1.5rem 2.25rem;
+  box-sizing: border-box;
+}
+
+.cardsSection {
+  width: 100%;
+  padding: 1.5rem 1.5rem clamp(3.25rem, 6vw, 4.5rem);
+  box-sizing: border-box;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroHeader {
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(2rem, 3.6vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0.9rem auto 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 64ch;
+}
+
+.heroActions {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.primaryCta,
+.primaryCta:visited {
+  height: 46px;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.primaryCta:hover {
+  background: var(--color-accent-hover);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.secondaryCta,
+.secondaryCta:visited {
+  height: 46px;
+  padding: 0 1.1rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.secondaryCta:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-2px);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.1rem, 3vw, 1.75rem);
+}
+
+.card {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0px 18px 45px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(var(--blur-md));
+  padding: 1.4rem 1.4rem 1.25rem;
+  min-height: 220px;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0px 26px 70px rgba(0, 0, 0, 0.46);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 2, 20, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.cardTitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.cardText {
+  margin: 0.75rem 0 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.cardLink,
+.cardLink:visited {
+  margin-top: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(60, 82, 237, 0.95);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.cardLink:hover {
+  color: rgba(134, 161, 249, 0.95);
+}
+
+.cardMeta {
+  margin-top: 1.05rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+

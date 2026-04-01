@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  margin-top: 4rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(24px, 4vw, 56px);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.leftColumn {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+  text-align: left;
+}
+
+.rightColumn {
+  display: flex;
+  width: 50%;
+  margin: 0;
+  height: min(520px, 60vh);
+  max-width: 520px;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 0 1.25rem;
+  }
+
+  .leftColumn {
+    width: 100%;
+  }
+
+  .rightColumn {
+    width: 100%;
+    height: min(380px, 55vh);
+    max-width: 520px;
+  }
+}

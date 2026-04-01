@@ -1,0 +1,96 @@
+.section {
+  width: 100%;
+  padding: clamp(3.75rem, 7vw, 5.25rem) 1.5rem 2.75rem;
+  box-sizing: border-box;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0px 18px 45px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(var(--blur-md));
+  padding: clamp(2.25rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.25rem);
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(2rem, 3.6vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0.9rem auto 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 64ch;
+}
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.primaryCta,
+.primaryCta:visited {
+  height: 46px;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.primaryCta:hover {
+  background: var(--color-accent-hover);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.secondaryCta,
+.secondaryCta:visited {
+  height: 46px;
+  padding: 0 1.1rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.secondaryCta:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-2px);
+}
+

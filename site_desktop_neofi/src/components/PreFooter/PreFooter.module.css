@@ -1,0 +1,22 @@
+.preFooterContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(to right, var(--color-muted), var(--color-brand));
+}
+
+.centerPreFoot {
+    display: flex;
+    width: 90%;
+    max-width: 1280px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tempButton {
+    background-color: var(--color-accent);
+    width: 30%;
+    height: 30%;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}

@@ -1,0 +1,40 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    background-color: #161C2D;
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.texto {
+    color: #FFF;
+    font-family: "Helvetica Neue";
+    letter-spacing: -0.075rem;
+    margin-top: 0;
+    width: 95%;
+}
+
+.par {
+    composes: texto;
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+.head {
+    composes: texto;
+    font-size: 1.4rem;
+    margin-top: 8;
+    margin-bottom: 0.2rem;
+}
+
+
+.image {
+    margin-bottom: 15%;
+    margin-top: 10%;
+    height: 40%;
+    width: 30%;
+}

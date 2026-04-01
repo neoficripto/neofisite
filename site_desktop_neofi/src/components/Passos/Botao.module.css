@@ -1,0 +1,54 @@
+.fullContainer {
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+  }
+
+button {
+  display: flex;
+  width: 100%;
+  height: 13rem;
+  border-radius: 1.375rem;
+  background-color: #3c52ed;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: none;
+}
+
+.active {
+  background-color: #3c52ed;
+}
+
+.active:hover {
+    outline: .2rem solid #ffffff;
+}
+
+.inactive {
+  background-color: #161c2d;
+}
+
+.inactive:hover {
+    outline: .2rem solid #3c52ed;
+}
+
+.imgBotao {
+  width: 4rem;
+}
+
+.iconWrapper {
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+}
+
+.numberText {
+  color: #ffffff;
+  font-family: "Helvetica Neue", Helvetica;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -0.2px;
+  margin-bottom: 0;
+  margin-top: 0;
+}

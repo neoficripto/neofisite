@@ -1,0 +1,139 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  /* background-color: #f0f2f5; */
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; */
+}
+
+/* The actual form card */
+.loginForm {
+  background:rgb(214, 211, 211);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;  
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* color: white; */
+}
+
+.inputGroup label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: black;
+}
+
+.inputGroup input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.inputGroup input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Wrapper to position the eye icon inside the input */
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding-right: 40px; /* Make space for the icon */
+}
+
+.toggleBtn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5%;
+  padding: 0;
+}
+
+.toggleBtn:hover {
+  color: #333;
+}
+
+.submitBtn {
+  margin-top: 1rem;
+  padding: 0.85rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  height: 60%;
+}
+
+.submitBtn:hover {
+  background-color: #0056b3;
+}
+
+.logo { 
+    width: 30%;
+    justify-self: center;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+}
+
+/* Add these to the bottom of Login.module.css */
+
+.footerLinks {
+  text-align: center;
+  margin-top: 1rem; /* Space between button and text */
+}
+
+.footerText {
+  color: black; /* Light gray to contrast with the blue background */
+  font-size: 0.9rem;
+}
+
+.link {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-left: 5px; /* Tiny space between the question and the link */
+}
+
+.link:hover {
+  text-decoration: underline;
+}

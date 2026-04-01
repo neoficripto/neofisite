@@ -1,0 +1,42 @@
+.outerDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 80vh;
+    width: 100%;
+    text-align: center;
+}
+
+.imgContainer {
+    display: flex;
+    width: 100%;
+    align-self: center;
+    justify-content: space-around; /* This handles the spacing between cards */
+    padding: 0 2rem; /* Better to use padding on container than margins */
+    margin-bottom: 3rem;
+    box-sizing: border-box;
+}
+
+.header {
+    font-weight: 300;
+    font-size: 2.7rem;
+    line-height: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Apply the width to the GlowCard wrapper */
+.cardWrapper {
+    width: 25%;
+    /* Ensure the rounded corners of the card clip the square image */
+    /* overflow: hidden;  */
+    border-radius: 1rem; /* Match the border-radius in GlowCard if needed */
+    position: relative;
+}
+
+/* The image just fills the card */
+.innerImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers area without stretching */
+    display: block; /* Removes bottom spacing often seen with inline images */
+}

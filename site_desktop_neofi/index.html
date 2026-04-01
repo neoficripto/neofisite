@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeoFi</title>
+    <meta
+      name="description"
+      content="Estratégia, execução e transparência para operar cripto com método. NeoBoost, NeoLine e NeoYield."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="NeoFi" />
+    <meta
+      property="og:description"
+      content="Estratégia, execução e transparência para operar cripto com método. NeoBoost, NeoLine e NeoYield."
+    />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="NeoFi" />
+    <meta
+      property="twitter:description"
+      content="Estratégia, execução e transparência para operar cripto com método. NeoBoost, NeoLine e NeoYield."
+    />
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get('__redirect');
+        if (!redirect) return;
+        try {
+          var url = decodeURIComponent(redirect);
+          params.delete('__redirect');
+          var remaining = params.toString();
+          window.history.replaceState(null, '', url + (remaining ? (url.indexOf('?') === -1 ? '?' : '&') + remaining : ''));
+        } catch (e) {
+          params.delete('__redirect');
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+/* TextShimmer.css */
+.textShimmer {
+  /* Layout & Positioning */
+  position: relative;
+  display: inline-block;
+  
+  /* Background logic */
+  background-size: 250% 100%, auto;
+  background-clip: text;
+  -webkit-background-clip: text; /* Required for Chrome/Safari */
+  color: transparent;
+  background-repeat: no-repeat, padding-box;
+  font-size: 3rem;
+  /* * CSS Variables 
+   * These define the colors for the shimmer.
+   */
+  --base-color: var(--color-muted);
+  --base-gradient-color: #ffffff;
+  
+  /* The Shimmer Gradient Logic */
+  --bg: linear-gradient(
+    90deg,
+    #0000 calc(50% - var(--spread)),
+    var(--base-gradient-color),
+    #0000 calc(50% + var(--spread))
+  );
+}
+
+/* Dark Mode Support 
+   If your app uses a class for dark mode (e.g. <body class="dark">), keep .dark 
+   If you rely on system settings, use @media (prefers-color-scheme: dark)
+*/
+@media (prefers-color-scheme: dark) {
+  .text-shimmer {
+    --base-color: #71717a;
+    --base-gradient-color: #ffffff;
+  }
+}

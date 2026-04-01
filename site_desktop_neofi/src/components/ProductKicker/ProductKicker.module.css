@@ -1,0 +1,23 @@
+.kicker {
+  font-family: var(--font-sans);
+  margin: 0;
+}
+
+.section {
+  color: var(--color-brand);
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.65rem;
+}
+
+.hero {
+  color: var(--color-brand);
+  font-family: "Helvetica Neue", Helvetica, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: clamp(3rem, 6vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}

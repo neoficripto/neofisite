@@ -1,0 +1,73 @@
+/* The background layer for the rain */
+.rainContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Behind the content */
+  pointer-events: none; /* Let clicks pass through to the background if needed */
+  /* overflow: hidden; */
+}
+
+.itemContainer {
+  width: 10%;
+  /* opacity : .3; */
+}
+
+/* The individual falling item */
+.rainItem {
+  position: absolute;
+  top: -210px; /* Start slightly above viewport */
+  opacity: 1;
+  width: 10%;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* The falling animation */
+/* Update the @keyframes */
+@keyframes fall {
+  0% {
+    transform: translate3d(0, -10vh, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1; /* Fade in quickly at the top */
+  }
+  80% {
+    opacity: 0.8; /* Stay visible for most of the fall */
+  }
+  100% {
+    /* 1. Increase distance to 140vh to ensure it clears the 120vh container */
+    transform: translate3d(0, 105vh, 0); 
+    
+    /* 2. Fade to 0 opacity at the very end so the reset is invisible */
+    opacity: 0; 
+  }
+}
+
+/* The Content Layer */
+.contentContainer {
+  position: relative;
+  z-index: 1; /* Sits on top of rain */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* The Glassmorphism Card */
+.glassCard {
+  background: rgba(255, 255, 255, 0.1); /* Low opacity white */
+  backdrop-filter: blur(10px); /* Blurs the rain behind it */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}

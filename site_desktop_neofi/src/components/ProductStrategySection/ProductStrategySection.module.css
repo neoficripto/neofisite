@@ -1,0 +1,251 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: clamp(4.5rem, 8vw, 6.5rem) 1.5rem;
+  box-sizing: border-box;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: none;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.kicker {
+  color: var(--color-brand);
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.65rem;
+}
+
+.title {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0.85rem auto 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 56ch;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: stretch;
+}
+
+.card {
+  position: relative;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0px 18px 45px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(var(--blur-md));
+  padding: 1.5rem 1.5rem 1.35rem;
+  min-height: 240px;
+  overflow: hidden;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0px 26px 70px rgba(0, 0, 0, 0.46);
+}
+
+.card:hover .iconWrap {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(2, 2, 20, 0.55);
+}
+
+.card:hover .bigNumber {
+  color: rgba(255, 255, 255, 0.075);
+}
+
+.card:hover .cardText {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.card:focus-within {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.cardConnector::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(-1 * clamp(1.25rem, 3vw, 2.25rem));
+  width: clamp(1.25rem, 3vw, 2.25rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  transform: translateY(-50%);
+  opacity: 0.85;
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+}
+
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 2, 20, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.22s ease, border-color 0.22s ease;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.bigNumber {
+  position: absolute;
+  right: 1.1rem;
+  top: 1.05rem;
+  font-size: 6.75rem;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  color: rgba(255, 255, 255, 0.06);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: color 0.22s ease;
+}
+
+.cardBody {
+  position: relative;
+  z-index: 1;
+}
+
+.cardTag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(60, 82, 237, 0.95);
+  margin-bottom: 0.65rem;
+}
+
+.cardTitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.cardText {
+  margin: 0.85rem 0 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  max-width: 40ch;
+  transition: color 0.22s ease;
+}
+
+.footerLine {
+  margin: clamp(2.75rem, 5vw, 3.75rem) 0 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.footerLineAccent {
+  color: var(--color-brand);
+}
+
+.actions {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ctaButton,
+.ctaButton:visited {
+  height: 44px;
+  padding: 0 1.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.98rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  will-change: transform;
+}
+
+.ctaButton:hover {
+  background: var(--color-accent-hover);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: scale(1.05);
+}
+
+.ctaSubtext {
+  margin-top: 0.85rem;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .cardConnector::after {
+    display: none;
+  }
+
+  .card {
+    min-height: 220px;
+  }
+
+  .bigNumber {
+    font-size: 5.75rem;
+  }
+}

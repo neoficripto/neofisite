@@ -1,0 +1,168 @@
+.container {
+  display: flex;
+  margin-top: clamp(5.5rem, 9vw, 8.5rem);
+  margin-bottom: clamp(5.5rem, 9vw, 8.5rem);
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reversed {
+  flex-direction: row-reverse;
+}
+
+.leftColumn {
+  display: flex;
+  width: 56%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.rightColumn {
+  display: flex;
+  width: 44%;
+  margin: 0;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  will-change: transform;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-self: flex-end;
+  margin-top: 2.25rem;
+  flex-direction: row;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.baseButton,
+.baseButton:visited {
+  display: flex;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  width: auto;
+  min-width: 190px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  will-change: transform;
+}
+
+.baseButton:hover {
+  background-color: var(--color-accent-hover);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column-reverse;
+    padding: 0 1.25rem;
+  }
+
+  .reversed {
+    flex-direction: column-reverse;
+  }
+
+  .leftColumn {
+    width: 100%;
+  }
+
+  .rightColumn {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .buttonsContainer {
+    margin-top: 1.75rem;
+  }
+
+  .baseButton,
+  .baseButton:visited {
+    min-width: 160px;
+  }
+}
+
+/* --- NEW MODAL STYLES --- */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75); /* Darker background for focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(var(--blur-sm)); /* Nice blur effect behind modal */
+}
+
+.modalContent {
+  background: white;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease-out;
+
+  max-height: 90vh;       /* Never be taller than 90% of the screen */
+  overflow-y: auto;       /* Add a scrollbar if the content is too big */
+  padding-top: 3rem;
+}
+
+.modalTitle {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
