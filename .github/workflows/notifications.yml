@@ -8,13 +8,29 @@ on:
 
 jobs:
   notify:
-    if: ${{ secrets.DISCORD_WEBHOOK != '' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: sarisia/actions-status-discord@v1
-        if: always()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          status: ${{ job.status }}
-          title: "Status do pipeline"
-          description: "Build/CI finalizado"
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            exit 0
+          fi
+
+          payload=$(cat <<'JSON'
+          {"content":"Status do pipeline: OK"}
+          JSON
+          )
+
+          if [ "${{ job.status }}" != "success" ]; then
+            payload=$(cat <<'JSON'
+            {"content":"Status do pipeline: FALHA"}
+          JSON
+          )
+          fi
+
+          curl -fsSL -X POST \
+            -H "Content-Type: application/json" \
+            -d "$payload" \
+            "$DISCORD_WEBHOOK"
