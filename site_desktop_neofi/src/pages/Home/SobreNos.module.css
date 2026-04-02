@@ -25,7 +25,8 @@
   display: flex;
   width: 50%;
   margin: 0;
-  height: min(520px, 60vh);
+  height: 520px;
+  max-height: 60vh;
   max-width: 520px;
   overflow: hidden;
 }
@@ -42,7 +43,8 @@
 
   .rightColumn {
     width: 100%;
-    height: min(380px, 55vh);
+    height: 380px;
+    max-height: 55vh;
     max-width: 520px;
   }
 }

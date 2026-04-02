@@ -29,3 +29,5 @@ coverage/
 *.ntvs*
 *.njsproj
 *.sln
+.vercel
+.env*.local
