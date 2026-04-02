@@ -75,19 +75,17 @@ const BouncingLogos = ({
     };
     updateDimensions();
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      if (!entries || entries.length === 0) return;
-      updateDimensions(); 
-    });
-    resizeObserver.observe(container);
-
-    if (atomsRef.current.length === 0) {
-      atomsRef.current = logos.map(() => ({
-        x: Math.random() * Math.max(1, dimensionsRef.current.width - circleSize),
-        y: Math.random() * Math.max(1, dimensionsRef.current.height - circleSize),
-        vx: (Math.random() - 0.5) * speed,
-        vy: (Math.random() - 0.5) * speed,
-      }));
+    let resizeObserver = null;
+    const hasResizeObserver = typeof ResizeObserver !== 'undefined';
+    if (hasResizeObserver) {
+      resizeObserver = new ResizeObserver((entries) => {
+        if (!entries || entries.length === 0) return;
+        updateDimensions();
+      });
+      resizeObserver.observe(container);
+    } else {
+      window.addEventListener('resize', updateDimensions);
+      window.addEventListener('orientationchange', updateDimensions);
     }
 
     const resolveCollision = (atomA, atomB) => {
@@ -128,6 +126,7 @@ const BouncingLogos = ({
     };
 
 const update = () => {
+      updateDimensions();
       const { width, height } = dimensionsRef.current;
       const mouse = mouseRef.current;
       const isMouseDown = isMouseDownRef.current;
@@ -135,6 +134,15 @@ const update = () => {
       if (width === 0 || height === 0) {
         requestRef.current = requestAnimationFrame(update);
         return;
+      }
+
+      if (atomsRef.current.length !== logos.length) {
+        atomsRef.current = logos.map(() => ({
+          x: Math.random() * Math.max(1, width - circleSize),
+          y: Math.random() * Math.max(1, height - circleSize),
+          vx: (Math.random() - 0.5) * speed,
+          vy: (Math.random() - 0.5) * speed,
+        }));
       }
 
       atomsRef.current.forEach((atom, i) => {
@@ -224,7 +232,11 @@ const update = () => {
 
     return () => {
       cancelAnimationFrame(requestRef.current);
-      resizeObserver.disconnect();
+      if (resizeObserver) resizeObserver.disconnect();
+      if (!hasResizeObserver) {
+        window.removeEventListener('resize', updateDimensions);
+        window.removeEventListener('orientationchange', updateDimensions);
+      }
     };
   }, [logos, speed, circleSize, interactionRadius, pushStrength]);
 
