@@ -16,34 +16,54 @@ const BouncingLogos = ({
   // Track mouse position and click state
   const mouseRef = useRef({ x: null, y: null });
   const isMouseDownRef = useRef(false);
+  const pointerIdRef = useRef(null);
 
-  // --- MOUSE HANDLERS ---
-  const handleMouseMove = (e) => {
+  const setPointerPosition = (clientX, clientY) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     mouseRef.current = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
+      x: clientX - rect.left,
+      y: clientY - rect.top
     };
   };
 
-  const handleMouseDown = () => {
-    isMouseDownRef.current = true;
-    // Optional: visual feedback cursor
-    if(containerRef.current) containerRef.current.style.cursor = 'grabbing';
+  const handlePointerMove = (e) => {
+    setPointerPosition(e.clientX, e.clientY);
   };
 
-  const handleMouseUp = () => {
+  const handlePointerDown = (e) => {
+    pointerIdRef.current = e.pointerId;
+    containerRef.current?.setPointerCapture?.(e.pointerId);
+    isMouseDownRef.current = true;
+    if(containerRef.current) containerRef.current.style.cursor = 'grabbing';
+    setPointerPosition(e.clientX, e.clientY);
+  };
+
+  const handlePointerUp = (e) => {
+    if (pointerIdRef.current === e.pointerId) {
+      containerRef.current?.releasePointerCapture?.(e.pointerId);
+      pointerIdRef.current = null;
+    }
     isMouseDownRef.current = false;
     if(containerRef.current) containerRef.current.style.cursor = 'grab';
   };
 
-  const handleMouseLeave = () => {
+  const handlePointerCancel = (e) => {
+    if (pointerIdRef.current === e.pointerId) {
+      containerRef.current?.releasePointerCapture?.(e.pointerId);
+      pointerIdRef.current = null;
+    }
     mouseRef.current = { x: null, y: null };
-    isMouseDownRef.current = false; // Reset click state if they leave the area
-    if(containerRef.current) containerRef.current.style.cursor = 'grab';
+    isMouseDownRef.current = false;
+    if (containerRef.current) containerRef.current.style.cursor = 'grab';
   };
-  // ----------------------
+
+  const handlePointerLeave = () => {
+    if (pointerIdRef.current !== null) return;
+    mouseRef.current = { x: null, y: null };
+    isMouseDownRef.current = false;
+    if (containerRef.current) containerRef.current.style.cursor = 'grab';
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -63,8 +83,8 @@ const BouncingLogos = ({
 
     if (atomsRef.current.length === 0) {
       atomsRef.current = logos.map(() => ({
-        x: Math.random() * (dimensionsRef.current.width - circleSize),
-        y: Math.random() * (dimensionsRef.current.height - circleSize),
+        x: Math.random() * Math.max(1, dimensionsRef.current.width - circleSize),
+        y: Math.random() * Math.max(1, dimensionsRef.current.height - circleSize),
         vx: (Math.random() - 0.5) * speed,
         vy: (Math.random() - 0.5) * speed,
       }));
@@ -211,10 +231,11 @@ const update = () => {
   return (
     <div 
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerCancel}
       style={{
         position: 'relative',
         width: '100%',
