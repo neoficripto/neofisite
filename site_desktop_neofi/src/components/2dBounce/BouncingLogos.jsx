@@ -137,12 +137,17 @@ const update = () => {
       }
 
       if (atomsRef.current.length !== logos.length) {
-        atomsRef.current = logos.map(() => ({
-          x: Math.random() * Math.max(1, width - circleSize),
-          y: Math.random() * Math.max(1, height - circleSize),
-          vx: (Math.random() - 0.5) * speed,
-          vy: (Math.random() - 0.5) * speed,
-        }));
+        atomsRef.current = logos.map((_, index) => {
+          const existing = atomsRef.current[index];
+          if (existing) return existing;
+          return {
+            x: Math.random() * Math.max(1, width - circleSize),
+            y: Math.random() * Math.max(1, height - circleSize),
+            vx: (Math.random() - 0.5) * speed,
+            vy: (Math.random() - 0.5) * speed,
+            element: null,
+          };
+        });
       }
 
       atomsRef.current.forEach((atom, i) => {
@@ -269,7 +274,22 @@ const update = () => {
           <div
             key={index}
             ref={(el) => {
-              if (atomsRef.current[index]) {
+              if (!el) {
+                if (atomsRef.current[index]) atomsRef.current[index].element = null;
+                return;
+              }
+
+              const { width, height } = dimensionsRef.current;
+
+              if (!atomsRef.current[index]) {
+                atomsRef.current[index] = {
+                  x: Math.random() * Math.max(1, width - circleSize),
+                  y: Math.random() * Math.max(1, height - circleSize),
+                  vx: (Math.random() - 0.5) * speed,
+                  vy: (Math.random() - 0.5) * speed,
+                  element: el,
+                };
+              } else {
                 atomsRef.current[index].element = el;
               }
             }}
